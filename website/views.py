@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 def index_view(request):
-    return render(request,'website/index.html')
+    return render(request,'website/index2.html')
 
 def about_view(request):
     return render(request,'website/about.html')
