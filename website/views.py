@@ -8,7 +8,7 @@ def index_view(request):
     return render(request,'website/index2.html')
 
 def about_view(request):
-    return render(request,'website/about.html')
+    return render(request,'website/about2.html')
 
 def contact_view(request):
     if request.method == 'POST':
@@ -24,7 +24,7 @@ def contact_view(request):
        
     form = ContactForm()
     context = {'form':form}
-    return render(request,'website/contact.html',context)
+    return render(request,'website/contact2.html',context)
 
 def notification_view(request):
     return render(request,'notification.html')
