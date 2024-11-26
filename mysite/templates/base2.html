@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="{% static "template2/css/slicknav.min.css" %}" type="text/css">
     <link rel="stylesheet" href="{% static "template2/css/style.css" %}" type="text/css">
     {% endcompress %}
-</head>
 
+</head>
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -45,10 +45,10 @@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li><a href="{% url "website:index" %}">Home</a></li>
-                <li><a href="#">Recipes</a></li>
-                <li><a href="#">Dinner</a></li>
-                <li><a href="#">Desserts</a></li>
-                <li class="dropdown"><a href="#">Pages</a>
+                <li><a href="#">Blog</a></li>
+                {% comment %} <li><a href="#">Dinner</a></li>
+                <li><a href="#">Desserts</a></li> {% endcomment %}
+                {% comment %} <li class="dropdown"><a href="#">Pages</a>
                     <ul class="dropdown__menu">
                         <li><a href="./categories-grid.html">Categories Grid</a></li>
                         <li><a href="./categories-list.html">Categories List</a></li>
@@ -57,7 +57,7 @@
                         <li><a href="./404.html">404</a></li>
                         <li><a href="./typography.html">Typography</a></li>
                     </ul>
-                </li>
+                </li> {% endcomment %}
                 <li><a href="{% url "website:about" %}">About</a></li>
                 <li><a href="{% url "website:contact" %}">Contact</a></li>
             </ul>
@@ -111,7 +111,7 @@
                         <nav class="header__menu">
                             <ul>
                                 <li class="active"><a href="{% url "website:index" %}">Home</a></li>
-                                <li><a href="#">Recipes</a>
+                                {% comment %} <li><a href="#">Recipes</a>
                                     <div class="header__megamenu__wrapper">
                                         <div class="header__megamenu">
                                             <div class="header__megamenu__item">
@@ -166,10 +166,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                <li><a href="#">Dinner</a></li>
-                                <li><a href="#">Desserts</a></li>
-                                <li class="dropdown"><a href="#">Pages</a>
+                                </li> {% endcomment %}
+                                <li><a href="#">Blog</a></li>
+                                {% comment %} <li><a href="#">Desserts</a></li> {% endcomment %}
+                                {% comment %} <li class="dropdown"><a href="#">Pages</a>
                                     <ul class="dropdown__menu">
                                         <li><a href="./categories-grid.html">Categories Grid</a></li>
                                         <li><a href="./categories-list.html">Categories List</a></li>
@@ -178,7 +178,7 @@
                                         <li><a href="./404.html">404</a></li>
                                         <li><a href="./typography.html">Typography</a></li>
                                     </ul>
-                                </li>
+                                </li> {% endcomment %}
                                 <li><a href="{% url "website:about" %}">About</a></li>
                                 <li><a href="{% url "website:contact" %}">Contact</a></li>
                             </ul>
@@ -302,16 +302,13 @@
 
     <!-- Js Plugins -->
     {% compress js %} 
+    <script src="{% static "template2/js/jquery-3.3.1.min.js" %}"></script>
     <script src="{% static "template2/js/bootstrap.min.js" %}"></script>
     <script src="{% static "template2/js/jquery.slicknav.js" %}"></script>
-    {% endcompress %}
-    {% compress js %}
-    <script src="{% static "template2/js/jquery-3.3.1.min.js" %}"></script>
     <script src="{% static "template2/js/owl.carousel.min.js" %}"></script>
     <script src="{% static "template2/js/main.js" %}"></script>
     {% endcompress %}
     
-
 </body>
 
 </html>
