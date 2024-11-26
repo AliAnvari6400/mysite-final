@@ -41,7 +41,3 @@ def newsletter_view(request):
     else: 
         return HttpResponseRedirect('/')
     
-    
-#def elements_view(request):
-#   return render(request,'website/elements.html')
-

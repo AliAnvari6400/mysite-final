@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6  p-0">
-                            <div class="hero__inside__item set-bg" data-setbg="{% static "tempalte2/img/hero/hero-4.jpg" %}">
+                            <div class="hero__inside__item set-bg" data-setbg="{% static "template2/img/hero/hero-4.jpg" %}">
                                 <div class="hero__inside__item__text">
                                     <div class="hero__inside__item--meta">
                                         <span>08</span>
@@ -433,7 +433,7 @@
                                 <h6>Hi every one! I,m <span>Lena Mollein.</span></h6>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua.</p>
-                                <a href="#" class="primary-btn">Read more</a>
+                                <a href="{% url "website:about" %}" class="primary-btn">Read more</a>
                             </div>
                             <div class="sidebar__follow__item">
                                 <div class="sidebar__item__title">
@@ -524,13 +524,14 @@
                                     <h6>Subscribe</h6>
                                 </div>
                                 <p>Subscribe to our newsletter and get our newest updates right on your inbox.</p>
-                                <form action="#">
-                                    <input type="text" class="email-input" placeholder="Your email">
-                                    <label for="s-agree-check">
+                                <form action="{% url 'website:newsletter' %}" method="post">
+                                    {% csrf_token %}
+                                    <input name="EMAIL" type="email" class="email-input" placeholder="Your email">
+                                    {% comment %} <label for="s-agree-check">
                                         I agree to the terms & conditions
                                         <input type="checkbox" id="s-agree-check">
                                         <span class="checkmark"></span>
-                                    </label>
+                                    </label> {% endcomment %}
                                     <button type="submit" class="site-btn">Subscribe</button>
                                 </form>
                             </div>

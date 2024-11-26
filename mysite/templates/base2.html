@@ -46,20 +46,9 @@
             <ul>
                 <li><a href="{% url "website:index" %}">Home</a></li>
                 <li><a href="#">Blog</a></li>
-                {% comment %} <li><a href="#">Dinner</a></li>
-                <li><a href="#">Desserts</a></li> {% endcomment %}
-                {% comment %} <li class="dropdown"><a href="#">Pages</a>
-                    <ul class="dropdown__menu">
-                        <li><a href="./categories-grid.html">Categories Grid</a></li>
-                        <li><a href="./categories-list.html">Categories List</a></li>
-                        <li><a href="./single-post.html">Single Post</a></li>
-                        <li><a href="./signin.html">Sign In</a></li>
-                        <li><a href="./404.html">404</a></li>
-                        <li><a href="./typography.html">Typography</a></li>
-                    </ul>
-                </li> {% endcomment %}
                 <li><a href="{% url "website:about" %}">About</a></li>
                 <li><a href="{% url "website:contact" %}">Contact</a></li>
+                <li><a href="{% url "accounts:login" %}">Login / SignUp</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -84,8 +73,9 @@
                 <h6>Subscribe</h6>
             </div>
             <p>Subscribe to our newsletter and get our newest updates right on your inbox.</p>
-            <form action="#">
-                <input type="text" class="email-input" placeholder="Your email">
+            <form action="{% url 'website:newsletter' %}" method="post">
+                {% csrf_token %}
+                <input name="EMAIL" type="email" class="email-input" placeholder="Your email">
                 <label for="agree-check">
                     I agree to the terms & conditions
                     <input type="checkbox" id="agree-check">
@@ -111,74 +101,7 @@
                         <nav class="header__menu">
                             <ul>
                                 <li class="active"><a href="{% url "website:index" %}">Home</a></li>
-                                {% comment %} <li><a href="#">Recipes</a>
-                                    <div class="header__megamenu__wrapper">
-                                        <div class="header__megamenu">
-                                            <div class="header__megamenu__item">
-                                                <div class="header__megamenu__item--pic set-bg"
-                                                    data-setbg="{% static "template2/img/megamenu/p-1.jpg" %}">
-                                                    <div class="label">Vegan</div>
-                                                </div>
-                                                <div class="header__megamenu__item--text">
-                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            <div class="header__megamenu__item">
-                                                <div class="header__megamenu__item--pic set-bg"
-                                                    data-setbg="{% static "template2/img/megamenu/p-2.jpg" %}">
-                                                    <div class="label">Vegan</div>
-                                                </div>
-                                                <div class="header__megamenu__item--text">
-                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            <div class="header__megamenu__item">
-                                                <div class="header__megamenu__item--pic set-bg"
-                                                    data-setbg="{% static "template2/img/megamenu/p-3.jpg" %}">
-                                                    <div class="label">Vegan</div>
-                                                </div>
-                                                <div class="header__megamenu__item--text">
-                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            <div class="header__megamenu__item">
-                                                <div class="header__megamenu__item--pic set-bg"
-                                                    data-setbg="{% static "template2/img/megamenu/p-4.jpg" %}">
-                                                    <div class="label">Vegan</div>
-                                                </div>
-                                                <div class="header__megamenu__item--text">
-                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            <div class="header__megamenu__item">
-                                                <div class="header__megamenu__item--pic set-bg"
-                                                    data-setbg="{% static "template2/img/megamenu/p-5.jpg" %}">
-                                                    <div class="label">Vegan</div>
-                                                </div>
-                                                <div class="header__megamenu__item--text">
-                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li> {% endcomment %}
                                 <li><a href="#">Blog</a></li>
-                                {% comment %} <li><a href="#">Desserts</a></li> {% endcomment %}
-                                {% comment %} <li class="dropdown"><a href="#">Pages</a>
-                                    <ul class="dropdown__menu">
-                                        <li><a href="./categories-grid.html">Categories Grid</a></li>
-                                        <li><a href="./categories-list.html">Categories List</a></li>
-                                        <li><a href="./single-post.html">Single Post</a></li>
-                                        <li><a href="./signin.html">Sign In</a></li>
-                                        <li><a href="./404.html">404</a></li>
-                                        <li><a href="./typography.html">Typography</a></li>
-                                    </ul>
-                                </li> {% endcomment %}
                                 <li><a href="{% url "website:about" %}">About</a></li>
                                 <li><a href="{% url "website:contact" %}">Contact</a></li>
                             </ul>
@@ -196,7 +119,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__btn">
-                        <a href="./signin.html" class="primary-btn">Subscribe</a>
+                        <a href="{% url "accounts:login" %}" class="primary-btn">Login / SignUp</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

@@ -9,5 +9,4 @@ urlpatterns = [
     path('contact',contact_view,name='contact'),
     path('notification',notification_view,name='notification'),
     path('newsletter',newsletter_view,name='newsletter')
-    #path('elements',elements_view,name='elements')
 ]

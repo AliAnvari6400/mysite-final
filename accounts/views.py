@@ -41,7 +41,7 @@ def login_view(request):
                     messages.add_message(request,messages.ERROR,"incorrect username or password. please try again")
             form = AuthenticationForm()
             context = {'form':form}#,'next':next_url}
-            return render(request,'accounts/login.html',context)
+            return render(request,'accounts/login2.html',context)
     else:
         return redirect('/')
     
@@ -66,7 +66,7 @@ def signup_view(request):
         messages.add_message(request,messages.ERROR,"Enter correct password and email")
         form = UserCreationForm()
         context = {'form':form}
-        return render(request,'accounts/signup.html',context)
+        return render(request,'accounts/login2.html',context)
     else:
         return redirect('/')
     
