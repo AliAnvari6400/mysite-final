@@ -23,5 +23,7 @@ class ResetForm(forms.Form):
     
     
 class ChangeForm(forms.Form):
+    email = forms.EmailField()
+    key = forms.IntegerField()
     password1 = forms.CharField(max_length=255)
     password2 = forms.CharField(max_length=255)

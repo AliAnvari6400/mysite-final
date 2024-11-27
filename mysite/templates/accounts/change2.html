@@ -26,6 +26,8 @@
                             <div class="signin__form__text">
                                 <form action="{% url 'accounts:change' %}" method="POST">
                                     {% csrf_token %}
+                                    <input type="email" name="email" value ={{email}} hidden required>
+                                    <input type="text" name="key" value ={{key}} hidden required>
                                     <input type="password" placeholder="password" name="password1" required>
                                     <input type="password" placeholder="confirm password" name="password2" required>
                                     <button type="submit" class="site-btn">Send</button>

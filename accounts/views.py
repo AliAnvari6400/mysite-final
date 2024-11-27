@@ -96,40 +96,44 @@ def reset_view(request):
     context = {'form':form}
     return render(request,'accounts/reset2.html',context)
 
-
 def change_view(request):
-    print(key_dict)
-    email = request.GET.get('email')
-    key = request.GET.get('key')
-    print(email)
-    valid_key = key_dict[email]
-    print(valid_key)
-    if key == str(valid_key):
-        if request.method == 'POST':
+    if request.method == 'GET':
+        email = request.GET.get('email')
+        key = request.GET.get('key')
+        valid_key = key_dict[email]
+        if key == str(valid_key):
+            form = ChangeForm()
+            context = {'form':form,'email':email,'key':key}
+            return render(request,'accounts/change2.html',context)
+        else: 
+            messages.add_message(request,messages.ERROR,"get a link for reset password again")
+            return redirect('/')  
+                
+    if request.method == 'POST':
             form = ChangeForm(request.POST)
             if form.is_valid():
+                email = form.cleaned_data['email']
+                key = form.cleaned_data['key']
                 password1 = form.cleaned_data['password1']
                 password2 = form.cleaned_data['password2']
-                print(password1)
-                while password1 == password2:
-                    user = User.objects.filter(email=email)[0]
-                    user.set_password(password1)
-                    user.save()
-                    # -------- send email -------
-                    subject = "Change Password"
-                    message = str(user)+",your password changed successfully"
-                    send_mail(subject,message,settings.EMAIL_HOST_USER,[email],fail_silently=False,)
-                    # ---------------------------
-                    messages.add_message(request,messages.SUCCESS,"your password changed")
-                    key_dict[email] = None
-                    return redirect('/accounts/login')
-                messages.add_message(request,messages.ERROR,"password not matched")
+                print(key_dict[email])
+                if str(key) == str(key_dict[email]):
+                    while password1 == password2:
+                        user = User.objects.filter(email=email)[0]
+                        user.set_password(password1)
+                        user.save()
+                        # -------- send email -------
+                        subject = "Change Password"
+                        message = str(user)+",your password changed successfully"
+                        send_mail(subject,message,settings.EMAIL_HOST_USER,[email],fail_silently=False,)
+                        # ---------------------------
+                        messages.add_message(request,messages.SUCCESS,"your password changed")
+                        key_dict[email] = None
+                        return redirect('/')
+                    messages.add_message(request,messages.ERROR,"password not matched")
+                else: 
+                    messages.add_message(request,messages.ERROR,"get a link for reset password again")
+                    return redirect('/')
             else:
                 messages.add_message(request,messages.ERROR,"enter your password again")
     
-        form = ChangeForm()
-        context = {'form':form,'email':email}
-        return render(request,'accounts/change2.html',context)
-    else: 
-       messages.add_message(request,messages.ERROR,"get a link for reset password again")
-       return redirect('/') 
