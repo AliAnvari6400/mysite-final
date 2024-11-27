@@ -1,0 +1,42 @@
+{% extends 'base2-2.html' %}
+{% load static %}
+
+{%block content%}
+
+    <!-- Sign In Section Begin -->
+    <div class="signin">
+        <div class="signin__warp">
+            <div class="signin__content">
+                <div class="signin__logo">
+                    <a href="#"><img src="{% static "template2/img/siign-in-logo.png" %}" alt=""></a>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore dolore
+                    magna aliqua viverra.</p>
+                <div class="signin__form">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <p class="nav-link" role="tab" aria-selected="false">
+                                Change Password: {{email}}
+                            </p>
+                        </li>
+                        <li class="nav-item">
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-2" role="tabpanel">
+                            <div class="signin__form__text">
+                                <form action="{% url 'accounts:change' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="password" placeholder="password" name="password1" required>
+                                    <input type="password" placeholder="confirm password" name="password2" required>
+                                    <button type="submit" class="site-btn">Send</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sign In Section End -->
+
+{% endblock %}

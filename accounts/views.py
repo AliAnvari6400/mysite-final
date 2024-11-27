@@ -94,7 +94,7 @@ def reset_view(request):
       
     form = ResetForm()
     context = {'form':form}
-    return render(request,'accounts/reset.html',context)
+    return render(request,'accounts/reset2.html',context)
 
 
 def change_view(request):
@@ -129,7 +129,7 @@ def change_view(request):
     
         form = ChangeForm()
         context = {'form':form,'email':email}
-        return render(request,'accounts/change.html',context)
+        return render(request,'accounts/change2.html',context)
     else: 
        messages.add_message(request,messages.ERROR,"get a link for reset password again")
        return redirect('/') 
