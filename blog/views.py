@@ -36,7 +36,7 @@ def blog_home_view(request,cat_name = None,author = None,tag_name = None):
     posts,totalpages = page_management(request,posts)
     context = {'posts':posts,'totalpages':totalpages,'s_flag':s_flag ,'s':s}
     # print(request.__dict__) 
-    return render(request,'blog/blog-home.html',context)
+    return render(request,'blog/blog-home2.html',context)
 
 
 def blog_single_view(request,pid):   
@@ -91,9 +91,9 @@ def blog_single_view(request,pid):
                'form':form,'comments':comments}
     
     if request.user.is_authenticated:
-        return render(request,'blog/blog-single.html',context)
+        return render(request,'blog/blog-single2.html',context)
     else:
         if post.login_require == False:
-            return render(request,'blog/blog-single.html',context)
+            return render(request,'blog/blog-single2.html',context)
         else:
             return redirect('/accounts/login/')
