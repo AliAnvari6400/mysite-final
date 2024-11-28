@@ -25,22 +25,16 @@ def login_view(request):
                     username = request.POST['username']
                 password = request.POST['password']
                 user = authenticate(username=username, password=password)
-                
-            # form = AuthenticationForm(request = request,data = request.POST)
-            # if form.is_valid():
-                # username = form.cleaned_data.get('username')
-                # password = form.cleaned_data.get('password')
-                # user = authenticate(request,username = username,password = password)
                 if user is not None:
                     login(request,user)
-                    #next_url = request.POST.get('next', next_url)
+                    next_url = request.POST.get('next') #, next_url)
                     parsed_url = urlparse(next_url)
                     if not parsed_url.netloc and is_valid_path(next_url):
                         return HttpResponseRedirect(next_url)
                 else:
                     messages.add_message(request,messages.ERROR,"incorrect username or password. please try again")
             form = AuthenticationForm()
-            context = {'form':form}#,'next':next_url}
+            context = {'form':form,'next':next_url}
             return render(request,'accounts/login2.html',context)
     else:
         return redirect('/')
@@ -62,13 +56,15 @@ def signup_view(request):
             form = UserCreationForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('/accounts/login')
+                messages.add_message(request,messages.SUCCESS,"Your registeration completed")
+                return redirect('/')
         messages.add_message(request,messages.ERROR,"Enter correct password and email")
         form = UserCreationForm()
         context = {'form':form}
         return render(request,'accounts/login2.html',context)
     else:
         return redirect('/')
+   
     
 key_dict={}
 def keygenerator(x):
