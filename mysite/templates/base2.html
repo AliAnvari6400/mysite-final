@@ -76,11 +76,6 @@
             <form action="{% url 'website:newsletter' %}" method="post">
                 {% csrf_token %}
                 <input name="EMAIL" type="email" class="email-input" placeholder="Your email">
-                <label for="agree-check">
-                    I agree to the terms & conditions
-                    <input type="checkbox" id="agree-check">
-                    <span class="checkmark"></span>
-                </label>
                 <button type="submit" class="site-btn">Subscribe</button>
             </form>
         </div>

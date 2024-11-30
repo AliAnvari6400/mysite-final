@@ -1,8 +1,11 @@
-<div class="single-sidebar-widget tag-cloud-widget">
-    <h4 class="tagcloud-title">Tag Clouds</h4>
-    <ul>
+
+<div class="sidebar__item__categories">
+    <div class="sidebar__item__title">
+        <h6>Tag Clouds</h6>
+    </div>
+    <div class="categories__pagination">
         {% for tag in tags %}
-            <li><a href="{% url 'blog:tag' tag_name=tag.name %}">{{tag.name}}</a></li>
-        {% endfor %} 
-    </ul>
-</div>	
+        <span><a href="{% url 'blog:tag' tag_name=tag.name %}">{{tag.name}}</a></span>
+        {% endfor %}
+    </div>
+</div>
