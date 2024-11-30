@@ -36,7 +36,7 @@
                                         <div class="categories__post__item__text">
                                             <span class="post__label">
                                                 {% for cat in post.category.all %}
-                                                <a href="{% url "blog:category" cat_name=cat.name %}">{{cat.name}} {%if not forloop.last%} , {%endif%}</a>
+                                                <a href="{% url "blog:category" cat_name=cat.name %}">{{cat.name}} {%if not forloop.last%} | {%endif%}</a>
                                                 {% endfor %}
                                             </span>
                                             <h3><a href="{% url "blog:blog_single" pid=post.id %}">{{post.title}}</a></h3>
@@ -131,7 +131,12 @@
                                 </div>
                                 
                                 <br>
-                                {% tagclouds %}
+                                <div class="sidebar__item__categories">
+                                    <div class="sidebar__item__title">
+                                        <h6>Tag Clouds</h6>
+                                    </div>
+                                    {% tagclouds %}
+                                </div>
 
                             </div>
                         </div>
