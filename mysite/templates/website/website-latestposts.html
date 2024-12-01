@@ -1,6 +1,7 @@
 {% load static %}
 {% load website_tags%}
 
+
 <!-- Start blog Area -->
 {% comment %} <section class="recent-blog-area section-gap">
     <div class="container">
@@ -42,12 +43,11 @@
     </div>	
 </section> {% endcomment %}
 <!-- End recent-blog Area -->	
- 
 
 
 <div class="categories__post__item categories__post__item--large">
     <div class="categories__post__item__pic set-bg"
-        data-setbg="{% static "template2/img/categories/categories-post/cp-1.jpg" %}">
+        data-setbg="{{posts.0.image.url}}">
         <div class="post__meta">
             <h4>08</h4>
             <span>Aug</span>
@@ -79,11 +79,13 @@
         </div>
     </div>
 </div>
+
+
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="categories__post__item">
             <div class="categories__post__item__pic small__item set-bg"
-                data-setbg="{% static "template2/img/categories/categories-post/cp-2.jpg" %}">
+                data-setbg={{posts.1.image.url}}>
                 <div class="post__meta">
                     <h4>08</h4>
                     <span>Aug</span>
@@ -104,7 +106,7 @@
         </div>
         <div class="categories__post__item">
             <div class="categories__post__item__pic set-bg"
-                data-setbg="{% static "template2/img/categories/categories-post/cp-4.jpg" %}">
+                data-setbg={{posts.2.image.url}}>
                 <div class="post__meta">
                     <h4>08</h4>
                     <span>Aug</span>
@@ -126,8 +128,8 @@
                     gravida...</p>
             </div>
         </div>
-        <div class="categories__post__item__plain set-bg"
-            data-setbg="{% static "template2/img/categories/categories-post/cp-6.jpg" %}">
+        {% comment %} <div class="categories__post__item__plain set-bg"
+            data-setbg={{posts.3.image.url}}>
             <div class="categories__post__item__text">
                 <div class="post__meta">
                     <h4>08</h4>
@@ -145,10 +147,10 @@
                     <a href="#"><i class="fa fa-envelope-o"></i> <span>08</span></a>
                 </div>
             </div>
-        </div>
-        <div class="categories__post__item">
+        </div> {% endcomment %}
+        {% comment %} <div class="categories__post__item">
             <div class="categories__post__item__pic smaller__large set-bg"
-                data-setbg="{% static "template2/img/categories/categories-post/cp-8.jpg" %}">
+                data-setbg={{posts.4.image.url}}>
                 <div class="post__meta">
                     <h4>08</h4>
                     <span>Aug</span>
@@ -167,12 +169,13 @@
                     tempor incididunt dolore magna aliqua. Quis ipsum suspendisse ultrices
                     gravida...</p>
             </div>
-        </div>
+        </div> {% endcomment %}
     </div>
+
     <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="categories__post__item">
             <div class="categories__post__item__pic smaller__large set-bg"
-                data-setbg="{% static "template2/img/categories/categories-post/cp-3.jpg" %}">
+                data-setbg={{posts.3.image.url}}>
                 <div class="post__meta">
                     <h4>08</h4>
                     <span>Aug</span>
@@ -200,7 +203,7 @@
         </div>
         <div class="categories__post__item">
             <div class="categories__post__item__pic smaller__large set-bg"
-                data-setbg="{% static "template2/img/categories/categories-post/cp-5.jpg" %}">
+                data-setbg={{posts.0.image.url}}>
                 <div class="post__meta">
                     <h4>08</h4>
                     <span>Aug</span>
@@ -219,9 +222,9 @@
                     gravida...</p>
             </div>
         </div>
-        <div class="categories__post__item">
+        {% comment %} <div class="categories__post__item">
             <div class="categories__post__item__pic set-bg"
-                data-setbg="{% static "template2/img/categories/categories-post/cp-7.jpg" %}">
+                data-setbg={{posts.0.image.url}}>
                 <div class="post__meta">
                     <h4>08</h4>
                     <span>Aug</span>
@@ -242,11 +245,12 @@
                     tempor incididunt dolore magna aliqua. Quis ipsum suspendisse ultrices
                     gravida...</p>
             </div>
-        </div>
+        </div> {% endcomment %}
     </div>
+
     <div class="col-lg-12 text-center">
         <div class="load__more__btn">
-            <a href="#">Load more</a>
+            <a href="{% url "blog:blog_home" %}">Load more</a>
         </div>
     </div>
 </div>
