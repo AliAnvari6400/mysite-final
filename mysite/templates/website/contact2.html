@@ -12,7 +12,7 @@
                         <div class="breadcrumb__text">
                             <h2>Contact</h2>
                             <div class="breadcrumb__option">
-                                <a href="#">Home</a>
+                                <a href="{% url "website:index" %}">Home</a>
                                 <span>Contact</span>
                             </div>
                         </div>
@@ -50,11 +50,18 @@
                                 <p>My experience with Realy is absolutely positive. The themes are beautifully designed
                                     and well documented. Realy theme provides quick support.</p>
                             </div>
-                            <form action="#">
-                                <input type="text" placeholder="Name">
-                                <input type="text" placeholder="Email">
-                                <input type="text" placeholder="Website">
-                                <textarea placeholder="Message"></textarea>
+                            <form action="{% url 'website:contact' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="text" name="name" placeholder="Name" required>
+                                <input type="email" name="email" placeholder="Email" required>
+                                <input type="text" name="subject" placeholder="Subject" required>
+                                <textarea name="message" placeholder="Message" required></textarea>
+                                <div class="col-lg-4">
+                                    {{form.captcha}}
+                                    <br>
+                                    <br>
+                                    <div class="alert-msg" style="text-align: left;"></div> 
+                                </div>
                                 <button type="submit" class="site-btn">Submit</button>
                             </form>
                         </div>

@@ -43,8 +43,7 @@
                     <div class="single-post__top__text">
                         <p>{{post.content}} </p>
                     </div>
-
-                    {% tagclouds %}
+                    
                     
                     <div class="single-post__next__previous">
                         <div class="row">
@@ -78,6 +77,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="widget__title">
+                        <h4>Tag Clouds</h4>
+                    </div>
+                    {% tagclouds %}
+
+                    <div class="widget__title">
+                        <h4>Post Categories</h4>
+                    </div>
+                    {% postcategories %}
 
                     <div class="single-post__author__profile">
                         <div class="single-post__author__profile__pic">

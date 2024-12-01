@@ -19,7 +19,7 @@
                                     <span>Blog</span>
                                 </div>
                             </div>
-
+                            
                             {%for post in posts%}
                             <div class="categories__list__post__item">
                                 <div class="row">
@@ -47,7 +47,7 @@
                                                 <li>{{comments|length}} Comments</li>
                                                 <li>{{post.published_date|naturalday}}</li>
                                             </ul>
-                                            <p>{{post.content|snippet:100}} ...</p>
+                                            <p>{{post.content|snippet:100|safe}} ...</p>
                                         </div>
                                     </div>
                                 </div>
@@ -96,6 +96,13 @@
 
                         <div class="col-lg-4 col-md-4">
                             <div class="sidebar__item">
+                                <div class="sidebar__subscribe__item">
+									<form action="{% url "blog:search" %}" method="GET">
+			                            <input placeholder="Search Posts" name="s" type="text" class="email-input">
+			                            <button type="submit" class="site-btn">Search</button>
+			                        </form>
+                                </div>
+                                <br><br>
 
                                 {%include 'blog/blog_writer.html'%}
 
@@ -139,7 +146,6 @@
                                     </div>
                                     {% tagclouds %}
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -148,6 +154,5 @@
         </div>
     </section>
     <!-- Categories Section End -->
-
 
 {%endblock%}
