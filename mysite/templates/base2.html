@@ -72,12 +72,7 @@
             <div class="humberger__menu__title sidebar__item__title">
                 <h6>Subscribe</h6>
             </div>
-            <p>Subscribe to our newsletter and get our newest updates right on your inbox.</p>
-            <form action="{% url 'website:newsletter' %}" method="post">
-                {% csrf_token %}
-                <input name="EMAIL" type="email" class="email-input" placeholder="Your email">
-                <button type="submit" class="site-btn">Subscribe</button>
-            </form>
+            {% include 'website/website-subscribe.html' %}
         </div>
     </div>
     <!-- Humberger End -->
