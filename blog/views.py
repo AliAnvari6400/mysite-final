@@ -35,11 +35,10 @@ def blog_home_view(request,cat_name = None,author = None,tag_name = None):
         s_flag = True  
     posts,totalpages = page_management(request,posts)
     context = {'posts':posts,'totalpages':totalpages,'s_flag':s_flag ,'s':s}
-    # print(request.__dict__) 
     return render(request,'blog/blog-home2.html',context)
 
 
-def blog_single_view(request,pid):   
+def blog_single_view(request,pid):
     all_active_posts = Post.objects.filter(status = True, published_date__lte = timezone.now())
     l = len(all_active_posts)
     post_index = -1

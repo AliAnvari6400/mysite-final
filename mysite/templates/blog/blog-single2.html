@@ -26,7 +26,7 @@
                             <h4>{{post.title}}</h4>
                             <ul class="widget">
                                 <li>by {{post.author}}</li>
-                                <li>{{post.counted_views}}</li>
+                                <li>{{post.counted_views}} views</li>
                                 <li>{{comments|length}} Comments</li>
                                 <li>{{post.published_date|naturalday}}</li>
                             </ul>
@@ -63,6 +63,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
+                                {% if after == True %}
                                 <a href="{% url "blog:blog_single" pid=post_after.id %}" class="single-post__next">
                                     <h6>Next posts <span class="arrow_carrot-right"></span> </h6>
                                     <div class="single-post__next__meta">
@@ -74,6 +75,7 @@
                                         <h5>{{post_after.author}}</h5>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

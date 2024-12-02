@@ -43,8 +43,8 @@
                                             <h3><a href="{% url "blog:blog_single" pid=post.id %}">{{post.title}}</a></h3>
                                             <ul class="post__widget">
                                                 <li>by <span>{{post.author}}</span></li>
-                                                <li>{{post.counted_views}}</li>
-                                                <li>{{comments|length}} Comments</li>
+                                                <li>{{post.counted_views}} views</li>
+                                                <li>{% comment_count post %} Comments</li>
                                                 <li>{{post.published_date|naturalday}}</li>
                                             </ul>
                                             <p>{{post.content|snippet:100|safe}} ...</p>

@@ -1,6 +1,6 @@
 from django import template
 register = template.Library()
-from blog.models import Post,Category
+from blog.models import Post,Category,Comment
 from django.utils import timezone
 
 @register.filter
@@ -29,5 +29,10 @@ def tagclouds():
         post_all_tags = post.tags.all()
         for i in range(len(post_all_tags)):
             tags.add(post_all_tags[i])
-    #print(tags)
     return {'tags':tags}
+
+@register.simple_tag
+def comment_count(post):
+    comments = Comment.objects.filter(post = post, approved = True).count()
+    return comments
+    
