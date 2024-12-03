@@ -1,7 +1,7 @@
 {% load static %}
 {% load website_tags %}
 
-
+{% if posts %}
 <div class="categories__post__item categories__post__item--large">
     <div class="categories__post__item__pic set-bg"
         data-setbg="{{posts.0.image.url}}">
@@ -18,7 +18,7 @@
             </li>
             {% endfor %}
         </ul>
-        <h3><a href="#">{{posts.0.title}}</a></h3>
+        <h3><a href="{% url "blog:blog_single" pid=posts.0.id %}">{{posts.0.title}}</a></h3>
         <ul class="post__widget">
             <li>by <span>{{posts.0.author}}</span></li>
             <li>{{posts.0.counted_views}} views</li>
@@ -156,3 +156,4 @@
         </div>
     </div>
 </div>
+{% endif %}
