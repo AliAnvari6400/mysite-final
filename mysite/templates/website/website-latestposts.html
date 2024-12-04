@@ -1,7 +1,7 @@
 {% load static %}
 {% load website_tags %}
 
-{% if posts %}
+{% if posts.0 %}
 <div class="categories__post__item categories__post__item--large">
     <div class="categories__post__item__pic set-bg"
         data-setbg="{{posts.0.image.url}}">
@@ -34,10 +34,11 @@
         </div>
     </div>
 </div>
-
+{% endif %}
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
+        {% if posts.1 %}
         <div class="categories__post__item">
             <div class="categories__post__item__pic small__item set-bg"
                 data-setbg={{posts.1.image.url}}>
@@ -63,6 +64,8 @@
                 <p>{{posts.1.content|snippet:100|safe}} ...</p>
             </div>
         </div>
+        {% endif %}
+        {% if posts.2 %}
         <div class="categories__post__item">
             <div class="categories__post__item__pic set-bg"
                 data-setbg={{posts.2.image.url}}>
@@ -88,9 +91,11 @@
                 <p>{{posts.2.content|snippet:100|safe}} ...</p>
             </div>
         </div>
+        {% endif %}
     </div>
 
     <div class="col-lg-6 col-md-6 col-sm-6">
+        {% if posts.3 %}
         <div class="categories__post__item">
             <div class="categories__post__item__pic smaller__large set-bg"
                 data-setbg={{posts.3.image.url}}>
@@ -117,12 +122,14 @@
                 <p>{{posts.3.content|snippet:100|safe}} ...</p>
             </div>
         </div>
+        {% endif %}
         <div class="categories__post__item__small">
             <img src="{% static "template2/img/categories/categories-post/quote.png" %}" alt="">
             <p>Lorem ipsum dolor amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt labore et dolore magna aliqua gravida.</p>
             <div class="posted__by">Elena T.Jaivy</div>
         </div>
+        {% if posts.4 %}
         <div class="categories__post__item">
             <div class="categories__post__item__pic smaller__large set-bg"
                 data-setbg={{posts.4.image.url}}>
@@ -148,6 +155,7 @@
                 <p>{{posts.4.content|snippet:100|safe}} ...</p>
             </div>
         </div>
+        {% endif %}
     </div>
 
     <div class="col-lg-12 text-center">
@@ -156,4 +164,3 @@
         </div>
     </div>
 </div>
-{% endif %}
