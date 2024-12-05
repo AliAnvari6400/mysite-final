@@ -2652,7 +2652,7 @@ ol {
 
 .signin {
 	background: rgba(0, 0, 0, 0.85);
-	position: fixed;
+	position: relative;
 	height: 100%;
 	width: 100%;
 	left: 0;

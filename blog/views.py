@@ -77,10 +77,11 @@ def blog_single_view(request,pid):
         form = CommentForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.add_message(request,messages.SUCCESS,"ok")
+            messages.add_message(request,messages.SUCCESS,"ok")  
         else: 
             messages.add_message(request,messages.ERROR,"error")
-        return HttpResponseRedirect('')   
+        return redirect(request.path)
+        #return HttpResponseRedirect('')   
     form = CommentForm()
     
     # comments show:
