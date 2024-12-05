@@ -58,7 +58,9 @@ def signup_view(request):
                 form.save()
                 messages.add_message(request,messages.SUCCESS,"Your registeration completed")
                 return redirect('/')
-        messages.add_message(request,messages.ERROR,"Enter correct password and email")
+            else:
+                messages.add_message(request,messages.ERROR,"Enter correct password and email")
+                return redirect('/')
         form = UserCreationForm()
         context = {'form':form}
         return render(request,'accounts/login2.html',context)
